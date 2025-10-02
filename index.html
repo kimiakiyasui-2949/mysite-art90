@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimiaki Yasui</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Sacramentoフォントの追加 -->
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+ 
+<meta name="viewport" content="width=1200">
+</head>
+<body>
+  
+  <header>
+    <h1>Imagination</h1>
+    <p class="subtitle">A short description for social media</p>
+  </header>
+
+
+  </div>
+</div>
+
+  <section class="hero">
+   
+  </section>
+
+  
+
+  <section class="creation-section">
+    <div class="creation-button"><a href="3d.html">creation!</a></div>
+  </section>
+  <h2 class="change">ART IN DAY LIFE</h2>
+
+  <section class="content-section">
+    <div class="image-block">
+        <a href="works.html" ><div class="overlay"></div></a>
+        <div class="box"><img src="water.jpg" alt="Water"class=feed-in></div>
+       
+        
+        <p class="fade-in-on-scroll">Water<br>
+          The wind swayed the trees, and a quiet moment enveloped my body<br>
+          風が木々を揺らし、静かな時間が体を包んだ。</p>
+    </div>
+    
+
+
+    <div class="image-block-1">
+        <p class="fade-in-on-scroll">Subway<br>
+          The half-asleep city slowly awakens to the rhythm of the subway<br>
+          半分眠ったままの街が、地下鉄のリズムに合わせて少しずつ目を覚ましていく。</p>
+      <a href="works-2.html" >
+      <div class="overlay-1"></div></a>
+      <img src="subway.jpg" alt="Subway"class=feed-in>
+      
+    </div>
+
+   <!-- ...既存のコード... -->
+<div class="bar">
+  <span>Exquisite artworks&nbsp;&nbsp;Art in everyday life&nbsp;&nbsp;Forever&nbsp;&nbsp;Exquisite artworks&nbsp;&nbsp;</span>
+</div>
+<!-- ...既存のコード... -->
+  
+    
+      
+    </div>
+    <!-- <div class="image-block-3">
+     
+  
+      <div class="overlay-3"></div></a>
+      <img src="tree.jpg" alt="Tree"class=feed-in>
+       
+<video width="200" height="300" controls>
+  <source src="tree.mp4" type="video/mp4">
+  お使いのブラウザは動画タグに対応していません。
+</video>
+      <p class="fade-in-on-scroll">Tree<br>
+        The shadows of the street trees sway gently
+      揺れる街路樹の影がゆっくり揺れる</p>
+    
+      
+    </div> -->
+    <div class="image-block-3">
+  <img src="tree.jpg" alt="説明画像">
+
+  <div class="video-text-container">
+    
+    <h2>the passage of time</h2>
+    <p class="fade-in-on-scroll">Tree <br>The shadows of the street trees sway gently
+    揺れる街路樹の影がゆっくり揺れる</p>
+  </div>
+</div>
+<div class="video">
+<video src="art.mp4"loop muted playsinline autoplay></video>
+</div>
+
+
+    <h2 class="text">Welcome to a creative world</h2>
+
+    <hr>
+
+    <div class="image-block-4">
+          <p class="fade-in-on-scroll">Musium<br>
+            In a corner of the museum, my steps came to a halt before a single artwork<br>
+            美術館の片隅、ひとつの作品の前で足が止まった。</p>
+      <img src="a-to.jpg"alt="Kitchen"class=feed-in>
+      <a href="works-4.html" ><div class="overlay-4"></div></a>
+   
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer">Just like the weather</p>
+   
+  <a href="kimiakiyasui2@gmail.com" class="mail">Mail</a>
+  </footer>
+  
+</body>
+<script>
+  window.addEventListener('scroll', function () {
+    const target = document.querySelector('.change');
+    const scrollY = window.scrollY;
+
+    // 表示するスクロール位置の範囲（例：300px〜800px の間だけ表示）
+    if (scrollY > 300 && scrollY < 700) {
+      target.classList.add('visible');
+    } else {
+      target.classList.remove('visible');
+    }
+    
+  });
+  window.addEventListener('scroll', function() {
+  const targets = document.querySelectorAll('.fade-in-on-scroll');
+  const windowHeight = window.innerHeight;
+
+  targets.forEach(target => {
+    const rect = target.getBoundingClientRect();
+
+    // 要素の上端がウィンドウの下端より上（画面内に入ったか）を判定
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      target.classList.add('visible');
+    } else {
+      target.classList.remove('visible');
+    }
+  });
+});
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const fadeElems = document.querySelectorAll('.fade-in-on-scroll');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeElems.forEach(elem => {
+      observer.observe(elem);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+  const targets = document.querySelectorAll(
+    ".image-block img, .image-block-1 img, .image-block-2 img, .image-block-3 img, .image-block-4 img, .fade-in-on-scroll"
+  );
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  targets.forEach(target => observer.observe(target));
+});
+
+</script>
+
+
+
+</html>
