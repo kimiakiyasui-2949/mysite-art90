@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="hamburger-menu" class="hamburger-menu">
+    <span class="close-btn">&times;</span>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="relax.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+       
+    </ul>
+</div>
+
+    <p class="menu">manu</p>
+    <section class="main-1">
+    <video src="shoot-2-1.mp4"muted autoplay loop class="video"></video>
+    </section>
+    <div class="text">
+        <p class="text-2">position02</p>
+         <p>impact town guide</p>
+    </div>
+    <section class="text-2">
+        international guest house in the would
+    </section>
+    <section>
+    <section class="main">
+        <img src="New York6.jpg"  class="photo fade-in" id="ny-photo">
+        <p class="text-3">guide tuarnin matroporitan muisum most famous musium in the would absoruty nice</p>
+        <p class="text-7">guide tuarnin matroporitan muisum most<br> famous musium in the would absoruty nice</p>
+        <div class="image-text-box">
+    <img src="show.jpg" class="photo-2 fade-in" id="show-photo">
+    <p class="text-8">guide tuarnin matroporitan muisum most<br>famous musium in the would absoruty nice</p>
+</div>
+
+        <p class="text-4">guide tuarnin matroporitan muisum most famous musium in the would absoruty nice</p>
+    </section>
+    <div class="text-5">
+        <p class="text-3">position02</p>
+         <p class="text-6">impact town guide</p>
+    </div>
+    </section>
+    <section class="main-3">
+ 
+    
+</section>
+<hr>
+<footer>
+      <p> guest house<br>
+    for talvel<br>
+    information</p>
+     <p class="text-9">★★★★</p>
+    
+    <p class="text-10">kfndmd.gmail.com</p>
+</footer>
+
+       
+    
+
+    <style>
+
+        /* ハンバーガーメニュー初期状態（非表示） */
+.hamburger-menu {
+    position: fixed;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(188, 14, 14, 0.95);
+    color: rgb(10, 10, 10);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1000;
+    padding: 60px 20px;
+    box-sizing: border-box;
+
+}
+
+/* activeでスライド＆フェードイン */
+.hamburger-menu.active {
+    left: 0;
+    opacity: 1;
+}
+
+/* メニューリスト */
+.hamburger-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+
+  
+}
+.hamburger-menu li {
+    margin: 20px 0;
+    
+    
+}
+.hamburger-menu a {
+    color: rgb(11, 11, 11);
+    text-decoration: none;
+    font-size: 12px;
+   
+}
+.hamburger-menu a:hover {
+    color: rgb(246, 243, 243);
+    text-decoration: none;
+    font-size: 30px;
+}
+
+/* Closeボタン */
+.hamburger-menu .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}        
+        .menu{
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .manu{
+            position: absolute;
+            
+        }
+        .main-1{
+            width: 100vw;
+            height:100vh;
+        }
+        html body{
+            padding: 0;
+            margin: 0;
+        }
+        .video{
+            width:100vw;
+            height:100vh;
+            object-fit: cover;
+        }
+        .text{
+            
+            padding: 40px;
+            font-size: 38px;
+            
+        }
+        .text-2{
+           text-align: left;
+           font-size: 12px;
+           font-size: large;
+        
+        }
+        .text p{
+            text-align: center;
+        }
+  
+    .main{
+        display: flex;
+    }
+    .fade-in {
+    opacity: 0;                /* 初期は透明 */
+    transform: translateY(20px); /* 下から少し移動させる */
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0); /* 元の位置に戻る */
+}
+    .text-5{
+        text-align: center;
+    }
+     .text-5 p{
+           
+           font-size: 17px;
+           padding: 12px;
+        
+        }
+       .text-5 .text-6{
+           
+           font-size: 37px;
+          
+        
+        }
+        
+        .text-{
+            position: absolute;
+            left: 50%;
+            font-size: 50px;
+            
+        }
+        .main{
+            display: flex;
+        }
+        .image-text-box{
+    display: flex;
+    （オプション） */
+    gap: 20px;            /* 画像とテキストの間に余白 */
+    margin-top: 40px;
+}
+    .text-7{
+        position: absolute;
+        left:45%;
+        top:1200px;
+        font-size: 40px;
+
+    }
+
+       .text-8{
+    position: static; /* ← absolute削除 */
+    font-size: 40px;  /* 好きに調整OK */
+    padding-left: 46px;
+    margin-top:40px;
+    top: 50px;
+}
+        .maim{
+            position: relative;
+        }
+       
+    .photo{
+        width: 40%;
+        height: 500px;
+        padding-top: 40px;
+    }
+    .main{
+    width: 100vw;
+   
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    background-color: rgb(237, 237, 227);
+     padding-bottom: 40px;
+}
+.photo, .photo-2 {
+    width: 40%;
+    height: 500px;
+    margin-top: 40px;
+}
+.main-3{
+    width: 100vw;
+    height: auto;
+}
+.main-3 img{
+    width: 100%;
+    height: auto;
+
+}
+.typewriter {
+    display: inline-block;        /* 位置固定 */
+    white-space: pre;             /* スペースや改行をそのまま表示 */
+    overflow: hidden;             /* はみ出した文字を隠す */
+    border-right: 3px solid black; /* カーソル */
+    animation: typing 4s steps(60, end), blink 0.75s step-end infinite;
+}
+
+/* typingアニメーション（文字幅単位で切る） */
+@keyframes typing {
+    from { width: 0ch; }
+    to { width: 60ch; }  /* 文字数に合わせて調整 */
+}
+
+/* カーソル点滅 */
+@keyframes blink {
+    0%, 50%, 100% { border-color: black; }
+    25%, 75% { border-color: transparent; }
+}
+
+
+
+footer{
+    position: relative;
+    padding-top: 400px;
+    padding-bottom: 30px ;
+    padding-left: 24px;
+}
+.text-9{
+    position: absolute;
+    left: 23px;
+    bottom: 2px;
+    
+}
+.text-10{
+    position: absolute;
+    left: 23px;
+
+}
+
+@media (max-width: 768px){
+
+    .text-2{
+        font-size: 20px;
+    }
+
+    .photo{
+        width: 200px;
+        height: 120px;
+        padding-top: 40px;
+    }
+
+    .main{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        background-color: rgb(237, 237, 227);
+        padding-bottom: 40px;
+    }
+
+    .photo-2{
+        width: 215px;
+        height: 120px;
+    }
+
+    /* ← 追加する修正ポイント */
+    .main .text-3{
+        font-size: 12px !important /* 好きに調整OK */
+        
+    }
+
+    .text-4{
+        font-size: 12px;
+    }
+
+      .main .text-7{
+        position: absolute;
+        left: 210px;
+        top: 1060px;
+        font-size: 7px;
+    } /* ← ← ← ここ閉じカッコ必須！！ */
+
+    .main .text-8{
+        padding-left: 18px;
+        font-size: 7px !important;  /* ← 修正済み */
+    }
+    footer{
+    padding-top: 200px;
+    padding-bottom: 30px ;
+    padding-left: 24px;
+   }
+   .fade-in {
+    opacity: 0;                 /* 初期は透明 */
+    transition: opacity 2s ease; /* フェードイン時間 */
+}
+
+/* 表示時に opacity 1 に */
+.fade-in.show {
+    opacity: 1;
+}
+footer p{
+      position: absolute;
+      bottom: 48px;
+      font-size: 10px;
+    }
+    .text-9{
+      position: absolute;
+      bottom: 30px;
+      
+    }
+    .text-10{
+      position: absolute;
+      left:24px;
+      bottom: 2px;
+      top: auto;
+     
+    }
+ 
+
+}
+
+    </style>
+<script>
+// メニュー開閉処理
+const menuBtn = document.querySelector('.menu');
+const hamburger = document.getElementById('hamburger-menu');
+const closeBtn = document.querySelector('.hamburger-menu .close-btn');
+
+menuBtn.addEventListener('click', () => {
+    hamburger.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const faders = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target); // 一度表示したら監視解除
+            }
+        });
+    }, {
+        threshold: 0.1 // 10% 見えたらフェードイン
+    });
+
+    faders.forEach(fader => observer.observe(fader));
+});
+</script>
+
+</body>
+</html>
