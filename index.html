@@ -2,288 +2,415 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<section<sectio>>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-
-    <div class="left-menu">
-        <ul>
-            <li data-target="menu">Menu</li>
-            <li data-target="about">About</li>
-            <li data-target="gallery">Gallery</li>
-            <li data-target="contact">Contact</li>
-        </ul>
-    </div>
-
-    <div class="right-content">
-        <!-- Menu -->
-        <div id="menu" class="content-item active">
-            <img src="street4.jpg" alt="steer" class="photo">
-            <p>About the Makeup Industry in New York<br>
-
-New York’s makeup industry is one of the most dynamic and influential in the world. As a global fashion and cultural hub, the city attracts top makeup artists, beauty brands, and creative talent from all over the world. The industry is driven by fashion weeks, editorial shoots, film and TV productions, and a constantly evolving beauty consumer market.<br>
-
-New York is home to many major beauty companies, including both established brands and innovative indie startups. Makeup artists in the city often work across multiple fields—runway, editorial, commercial advertising, theater, and social media. The fast-paced environment encourages creativity, trend-setting looks, and strong technical skills.<br>
-
-In addition, New York's diverse population plays a big role in shaping the local beauty culture. Artists are expected to work with a wide range of skin tones, styles, and cultural aesthetics. Because of this diversity, New York continues to be a major source of global beauty trends, influencing everything from everyday makeup styles to high-fashion looks.
-
-            </p>
-        </div>
-
-        <!-- About -->
-        <div id="about" class="content-item">
-            <img src="red.jpg" alt="red" class="red">
-            <p>Kent’s World of Makeup
-
-Kent’s world of makeup is built on creativity, freedom, and bold self-expression. His approach blends artistry with emotion, turning every face into a unique canvas. Rather than following trends, Kent focuses on enhancing individuality—highlighting each person’s natural beauty while adding his signature touch of drama and sophistication.
-
-Drawing inspiration from New York’s vibrant street culture, high-fashion runways, and global beauty influences, Kent creates looks that are modern, dynamic, and unforgettable. His work pushes boundaries, mixing color, texture, and technique to craft makeup that tells a story.
-
-For Kent, makeup is more than cosmetics—it’s a form of communication. His world invites people to explore their identity, embrace diversity, and celebrate beauty in all its forms.</p>
-        </div>
-
-        <!-- Gallery -->
-         
-        <div id="gallery" class="content-item">
-           <div class="slideshow-container">
-        <img src="show.jpg" class="slide-img">
-        <img src="street3.jpg" class="slide-img">
-        <img src="street6.jpg" class="slide-img">
-        <img src="kyoto.jpg" class="slide-img">
-    </div>
-            <h1>My Previous Works</h1>
-            <p class="text">My body of work reflects a deep passion for beauty, culture, and storytelling through makeup and photography. Over the years, I have created a wide range of pieces inspired by the vibrant energy of New York, the elegance of Kyoto, and the bold creativity found in fashion shows and street culture.
-
-My street photography captures raw emotion and individuality, highlighting the unique style and spirit of people in their everyday environments. The show-focused works express a more dramatic side—looks designed for runways, creative shoots, and artistic concepts that push beyond traditional makeup styles.
-
-I also explore the contrast between different cities and cultures, blending modern urban aesthetics with timeless beauty elements. Each piece represents a moment, a mood, and a perspective shaped by my experiences.
-
-These works together tell the story of my creative journey—one that continues to grow as I explore new ideas, techniques, and forms of self-expression.</p>
-        </div>
-
-        <!-- Contact -->
-        <div id="contact" class="content-item">
-            <img src="style.jpg" alt=""class="style">
-           
-            <footer>usubo kento .com</footer></p>
-        </div>
-    </div>
-
+<div id="hamburger-menu" class="hamburger-menu">
+    <span class="close-btn">&times;</span>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="relax.html">About</a></li>
+        <li><a href="gallery.html">Room</a></li>
+        <li><a href=" biography.html"> biography</a></li>
+        
+    </ul>
 </div>
+
+
+<section class="main">
+    <p class="menu">manu</p>
+    <p class="text">Kominca guest house</p>
+    <p class="studio">black and white</p>
+    <img src="road.jpg" class="pic">
+    <p class="text-12">scroll</p>
+</section>
+<div class="text-2">chenge</div>
+<section class="main-2">
+    <div class="item"><img src="aunt1.jpg">
+    <p>aunt</p>
+   </div>
+    <div class="item">
+    <img src="30.jpg">
+    <p>street</p>
+    </div>
+    <div class="item"> <img src="ao.jpg">
+    <p>blue</p>
+   </div>
+   <div class="item"><img src="rogi.jpg">
+    <p> apris</p>
+  </div>
+    
+</section>
+<div class="text-3">love</div>
+<video src="foryou.mp4"muted autoplay loop class="video"></video>
+<section class="text-7">
+    <p>Always wearing a happy smile.</p>
+</section>
+<section class="photo">
+    <div class="photo-track">
+        <img src="kyoto.jpg">
+        <img src="river.jpg">
+        <img src="green.jpg">
+        <img src="tikatetu.jpg">
+        <img src="tree.jpg">
+        <img src="show.jpg">
+
+        <!-- 無限ループ用に同じセットをもう一回 -->
+        <img src="kyoto.jpg">
+        <img src="river.jpg">
+        <img src="green.jpg">
+        <img src="tikatetu.jpg">
+        <img src="tree.jpg">
+        <img src="show.jpg">
+    </div>
+</section>
+
+<hr>
+<footer>
+   <p> guest house<br>
+    for talvel<br>
+    information</p>
+      <p class="text-9">★★★★★</p>
+    
+    <p class="text-10">kfndmd.gmail.com</p>
+</footer>
 <style>
-    .container {
-    display: flex;
-    height: 100vh;
-}
-
-.left-menu {
-    width: 180px;
-    background: none;
-    color: #0c0c0c;
-    padding: 20px;
-}
-
-.left-menu ul {
-    list-style: none;
+html, body {
+    margin: 0;
     padding: 0;
-}
 
-.left-menu li {
-    padding: 15px 0;
-    cursor: pointer;
-    border-bottom: 1px solid #444;
 }
-
-.left-menu li:hover {
-    color: #ffcc00;
-}
-
-.right-content {
-    flex: 1;
-    padding: 30px;
-}
-
-.content-item {
-    display: none;
-}
-
-.content-item.active {
-    text-align: right;
-    display: block;
-}
-.content-item p{
-    text-align: left;
-    top:4px;
-}
-
-/* スライドショーの画像を重ねて、1枚だけ表示 */
-.slideshow-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px; /* 好きに変更OK */
-    margin: 0 auto 20px;
-}
-
-.slide-img {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    left:-30px;
+/* ハンバーガーメニュー初期状態（非表示） */
+.hamburger-menu {
+    position: fixed;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(188, 14, 14, 0.95);
+    color:white;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: all 0.5s ease;
+    z-index: 1000;
+    padding: 60px 20px;
+    box-sizing: border-box;
 }
 
-.slide-img.active {
+/* activeでスライド＆フェードイン */
+.hamburger-menu.active {
+    left: 0;
     opacity: 1;
 }
-
-.content-item img {
-    max-width: 100%;
-    margin-bottom: 20px;
-}
-
-.content-item .photo-3{
+.menu, .text {
     position: absolute;
-    left:50%;
-    max-width:100px;
+    color: white;
+    z-index: 10; /* 画像より前面に表示 */
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
 }
-.content-item img {
-    max-width: 40%;
-    margin-bottom: 20px;
+
+.menu {
+    top: 20px;
+    left: 20px;
+    font-weight: bold;
+    font-size: 18px;
 }
-.content-item .red{
-    max-width:200px;
-}
-.content-item .text{
+
+.text-12{
     position: absolute;
-    top:550px;
-}
-.content-item .style{
-    width: 80%;
-}
-footer {
-    text-align: left;
-    padding-bottom: 36px;
-}
-@media (max-width: 380px) {
-    .content-item img {
-        max-width: 100% !important;
-        width: 100% !important;
-    }
-
-    /* スライドショー */
-    .slide-img {
-        position: relative;
-        width: 100%;
-        left: 0;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-    }
-
-    /* About の red.jpg */
-    .red {
-        max-width: 100% !important;
-    }
-
-    /* street4.jpg */
-    .photo {
-        max-width: 100% !important;
-        width: 100% !important;
-    }
-
-
-    /* About の red.jpg も大きく */
-    .red {
-        max-width: 80%;
-    }
-    .content-item.active {
-        text-align: center;
-        display: block;
-    }
-    .content-item .streer {
-    max-width: 200px;
-    margin-bottom: 20px;
-}
-
-
-
-.content-item .red{
-    max-width:300px;
-}
- 
+    bottom: 30px;
+    left:48%;
+    color: rgb(242, 241, 241);
     
-       .container {
-    display: flex;
-    height: 100vh;
+}
+.text {
+    top: 20px;
+    left: 100px;
+    font-size: 20px;
+}
+/* フェードイン用クラス */
+.visible-text {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.left-menu {
-    width: 120px;
-    background: none;
-    color: #0c0c0c;
-    padding: 12px;
-}
 
-.left-menu ul {
+/* メニューリスト */
+.hamburger-menu ul {
     list-style: none;
     padding: 0;
+    margin: 40px 0 0 0;
+  
 }
-
-.left-menu li {
-    padding: 7px 0;
-    cursor: pointer;
+.hamburger-menu li {
+    margin: 20px 0;
     
 }
-.content-item p{
-    text-align: left;
-    top:4px;
-    font-size: 8px;
+.hamburger-menu a {
+    color: rgb(11, 11, 11);
+    text-decoration: none;
+    font-size: 30px;
+}
+.hamburger-menu a:hover {
+    color: rgb(246, 243, 243);
+    text-decoration: none;
+    font-size: 30px;
 }
 
-.content-item .text{
+/* Closeボタン */
+.hamburger-menu .close-btn {
     position: absolute;
-    top:300px;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* メインコンテンツ */
+.main {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+.main .menu {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+}
+.pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* ここからフェード用 */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.pic.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+/* --- 左上の「manu」 --- */
+.main .menu {
+    position: absolute;
+    color: white;
+    left: 20px;
+    top: 20px;
+    font-size: 14px;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* --- PC の「home」位置 --- */
+.main .text {
+    position: absolute;
+    top: 20px;
+    left: 850px;
+    color: white;
+    margin: 0;
+    font-size: 20px;
+}
+.main .studio{
+    position: absolute;
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    font-size: 56px;
+}
+.text-2{
+    text-align: center;
+    padding: 25px;
+    padding-top: 60px;
+}
+.main-2 {
+    display: flex;              /* 横並びにする */
+    justify-content: center;    /* 真ん中寄せ */
+    background-color: rgb(238, 241, 243);
+    padding: 60px 0 200px 0;
+}
+
+.main-2 .item {
+    text-align: center;
+    margin: 0 20px;             /* 横の余白 */
+}
+
+.main-2 img {
+    width: 280px;
+    height: 180px;
+    object-fit: cover;
+}
+.text-3{
+    text-align: center;
+    padding: 25px;
+}
+.video{
+    width:100%
+    
+}
+.text-7{
+    font-size: 24px;
+    text-align: center;
+}
+.photo {
+    overflow: hidden;   /* はみ出た部分を隠す */
+    width: 100%;
+}
+
+.photo-track {
+    display: flex;
+    gap: 60px;
+    animation: scroll 12s linear infinite;
+}
+
+.photo-track img {
+    width: 16.66%; /* 6枚で100%分割 */
+    height: 230px;
+    object-fit: cover;
+}
+
+/* 横スクロールアニメーション */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* スマホ対応 */
+@media (max-width: 480px) {
+    .photo-track img {
+        width: 200px;
+        height: 80px;
+        object-fit: cover;
+    }
+}
+.hamburger-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
 }
 footer{
-    position: absolute;
-    left:7px;
-    font-size: 8px;
-}
- h1{
-    font-size:10px;
- }
+    padding-top: 400px;
+    padding-bottom: 30px ;
+    padding-left: 24px;
 }
 
+/* --- スマホ --- */
+@media (max-width: 768px) {
+    .main .text {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .text-12{
+    position: absolute;
+    bottom: 30px;
+    left:43%;
+    color: rgb(242, 241, 241);
+    
+}
+    .main-2 {
+    display: flex;              /* 横並びにする */
+    justify-content: center;    /* 真ん中寄せ */
+    background-color: rgb(238, 241, 243);
+    padding: 60px 0 4px 0;
+}
+
+    .main-2 {
+        flex-direction: column;  /* 縦並びにする */
+        align-items: center;
+    }
+
+    .main-2 img {
+        width: 280px;
+        height: auto;
+        padding-top: 20px;
+    }
+    .photo img {
+    width: 200px;
+    height: 80px;
+    object-fit: cover;
+}
+footer{
+    position: relative;
+    padding-top: 400px;
+    padding-bottom: 30px ;
+    padding-left: 24px;
+}
+.text-9{
+    position: absolute;
+    left: 23px;
+    bottom: 1px;
+    
+}
+.text-10{
+    position: absolute;
+    left: 23px;
+
+}
+footer p{
+      position: absolute;
+      bottom: 58px;
+      font-size: 12px;
+    }
+    .text-9{
+      position: absolute;
+      bottom: 30px;
+      
+    }
+    .text-10{
+      position: absolute;
+      left:26px;
+      bottom: 2px;
+      top: auto;
+     
+    }
+}
 </style>
 <script>
-    const menuItems = document.querySelectorAll(".left-menu li");
-const contents = document.querySelectorAll(".content-item");
+// メニュー開閉処理
+const menuBtn = document.querySelector('.menu');
+const hamburger = document.getElementById('hamburger-menu');
+const closeBtn = document.querySelector('.hamburger-menu .close-btn');
 
-menuItems.forEach(item => {
-    item.addEventListener("click", () => {
-        const target = item.getAttribute("data-target");
-
-        contents.forEach(c => c.classList.remove("active"));
-        document.getElementById(target).classList.add("active");
-    });
+menuBtn.addEventListener('click', () => {
+    hamburger.classList.add('active');
 });
-// スライドショー --------------------
-const slides = document.querySelectorAll(".slide-img");
-let index = 0;
 
-function showSlide() {
-    slides.forEach(img => img.classList.remove("active"));
-    slides[index].classList.add("active");
+closeBtn.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+});
 
-    index = (index + 1) % slides.length; // 次の画像へ
-}
+window.addEventListener("load", () => {
+    const pic = document.querySelector(".pic");
+    pic.classList.add("visible");
+});
+window.addEventListener('load', () => {
+    const pic = document.querySelector('.pic');
+    const menu = document.querySelector('.menu');
+    const home = document.querySelector('.text');
 
-showSlide();
-setInterval(showSlide, 3000); // 3秒ごとに切り替え
+    // 画像フェードイン
+    pic.classList.add('visible');
 
+    // 文字フェードイン（少し遅らせるときれい）
+    setTimeout(() => {
+        menu.classList.add('visible-text');
+        home.classList.add('visible-text');
+    }, 500);
+});
+</script>
 
 </script>
+
+
 </body>
 </html>

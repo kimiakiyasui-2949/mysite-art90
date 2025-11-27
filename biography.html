@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="main">
+        <p class="text"> biography</p>
+        <p class="menu">manu</p>
+        <div id="hamburger-menu" class="hamburger-menu">
+    <span class="close-btn">&times;</span>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="relax.html">About</a></li>
+        <li><a href="gallery.html">Room</a></li>
+        <li><a href=" biography.html"> biography</a></li>
+       
+    </ul>
+</div>
+        <img src="tea.jpg" class="tea">
+        <p>guide tuarnin matroporitan muisum most famous musium in the would absoruty nice</p>
+    </section>
+    <hr>
+    <footer>
+      <p> guest house<br>
+    for talvel<br>
+    information</p>
+    <p class="text-9">★★★★★</p>
+    
+    <p class="text-10">kfndmd.gmail.com</p>
+</footer>
+    <style>
+        .main{
+            width: 100vw;
+            height: 100%;
+        }
+        .text{
+            position: absolute;
+            left:17%;
+            top:1px;
+            font-weight: bold;
+        }
+        .tea{
+            width:40%;
+        }
+        
+      /* ハンバーガーメニュー初期状態（非表示） */
+.hamburger-menu {
+    position: fixed;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(188, 14, 14, 0.95);
+    color:white;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1000;
+    padding: 60px 20px;
+    box-sizing: border-box;
+
+}
+
+/* activeでスライド＆フェードイン */
+.hamburger-menu.active {
+    left: 0;
+    opacity: 1;
+}
+
+/* メニューリスト */
+.hamburger-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+
+  
+}
+.hamburger-menu li {
+    margin: 20px 0;
+    
+    
+}
+.hamburger-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+   
+}
+.hamburger-menu a:hover {
+    color: rgb(246, 243, 243);
+    text-decoration: none;
+    font-size: 30px;
+}
+
+/* Closeボタン */
+.hamburger-menu .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}        
+        .menu{
+            cursor: pointer;
+            font-weight: bold;
+        }
+                footer{
+    position: relative;
+    padding-top: 400px;
+    padding-bottom: 30px ;
+    padding-left: 24px;
+}
+    footer p{
+      position: absolute;
+      bottom: 58px;
+    }
+    .text-9 {
+        position: absolute;
+        bottom: 7%;
+    }
+    .text-10{
+        position: absolute;
+        bottom: 2px;
+    }
+    @media(max-width:768px){
+           footer p{
+      position: absolute;
+      bottom: 48px;
+      font-size: 12px;
+    }
+    .text-9{
+      position: absolute;
+      bottom: 30px;
+      
+    }
+    .text-10{
+      position: absolute;
+      left:26px;
+      bottom: 2px;
+      top: auto;
+     
+    }
+    footer p{
+      position: absolute;
+      bottom: 58px;
+      font-size: 12px;
+    }
+    .text-9{
+      position: absolute;
+      bottom: 30px;
+      
+    }
+    .text-10{
+      position: absolute;
+      left:26px;
+      bottom: 2px;
+      top: auto;
+     
+    }
+    }
+
+    </style>
+    <script>
+        const menuBtn = document.querySelector('.menu');
+const hamburger = document.getElementById('hamburger-menu');
+const closeBtn = document.querySelector('.hamburger-menu .close-btn');
+
+menuBtn.addEventListener('click', () => {
+    hamburger.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+});
+    </script>
+</body>
+</html>
