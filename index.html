@@ -1,371 +1,397 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ページ例 スクロール演出</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Georgia', serif;
+  overflow-x: hidden;
+  background: #f7f5f5;
+  color: #333;
+  position: relative;
+  background-size: cover;
+  background-image: url('human.jpg');
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+}
+
+/* ===== オープニング（イントロ） ===== */
+.intro-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: #bb0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0.9;
+  z-index: 2000;
+  overflow: hidden;
+  animation: introSplit 2.5s ease forwards;
+  animation-delay: 3.8s;
+}
+
+@keyframes introSplit {
+  0% { clip-path: inset(0 0 0 0); background: rgba(0,255,0,0); }
+  40% { background: rgba(0,255,0,0.25); }
+  70% { background: rgba(0,255,0,0.35); }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    background: rgba(0,255,0,0.4);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.intro-text {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 0;
+  margin-top: 40px;
+  transform: translateY(30px) scale(0.9);
+  animation: textFade 2.2s ease forwards;
+  animation-delay: 1s;
+}
+
+@keyframes textFade {
+  0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+  50% { opacity: 1; transform: translateY(0) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== ヘッダー ===== */
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 80px;
+  background: red;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+.header-message {
+  left: 0;
+  width: 100%;
+  color: rgb(8, 8, 8);
+  text-align: center;
+  font-size: 42px;
+  padding: 18px 0;
+  font-weight: bold;
+  z-index: 800;
+}
+
+/* ===== ハンバーガー＆×ボタン ===== */
+.hamburger {
+  width: 30px;
+  height: 3px;
+  background: white;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2001;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background: white;
+  position: absolute;
+  left: 0;
+  transition: all 0.4s ease;
+}
+
+.hamburger::before { top: -10px; }
+.hamburger::after { top: 10px; }
+
+.hamburger.active {
+  background: transparent;
+}
+
+.hamburger.active::before {
+  transform: rotate(45deg);
+  top: 0;
+  background: #fff;
+}
+
+.hamburger.active::after {
+  transform: rotate(-45deg);
+  top: 0;
+  background: #fff;
+}
+
+/* ×ボタン */
+.close-btn {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  z-index: 2002;
+  display: none;
+}
+
+.close-btn.show {
+  display: block;
+}
+
+/* ===== 全画面メニュー ===== */
+
+.menu {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s ease;
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.menu p {
+  font-size: 20px;
+  color: #ccc;
+}
+
+.menu.active ~ .down {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* ===== セクション & コンテンツ ===== */
+main { position: relative; z-index: 900; }
+section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+section.show { opacity:1; transform:translateY(0); }
+
+.img-container { display:flex; align-items:center; justify-content:center; max-width:1200px; width:100%; gap:40px; flex-wrap:wrap; }
+.img-container img { width:55%; border-radius:4px; }
+.text-box { width:35%; min-width:300px; text-align:left; }
+.text-title-2,.text-title-3,.text-title-4 { font-size:48px;font-weight:bold;margin-bottom:30px; transition:all 1s ease-out; }
+.text-title-2 { color:#c04e4e; }
+.text-title-3 { color:#bd0d0d; }
+.text-title-4 { color:#f40404; }
+.text-desc-2,.text-desc-3,.text-desc-4 { font-size:20px; line-height:1.6; opacity:1; transform:translateY(30px); transition:all 1.2s ease-out; }
+.text-desc-2 { color:#090909; }
+.text-desc-3 { color:#060000; }
+.text-desc-4 { color:#060606; }
+
+.word { font-weight:bold;text-align:center;font-size:60px;padding:60px 0px;opacity:0;transform:translateY(50px);transition:all 1s ease-out;color:#0f0e0e; }
+.word.show { opacity:1; transform:translateY(0); }
+
+.down { position:fixed; top:130px; left:0; width:100%; z-index:1500; padding:10px 0; }
+.whether { font-size:24px; }
+.down div { color:rgb(234, 142, 13); text-align:right; font-size:21px; display:block; padding:8px 28px; }
+.down a {color: #d9960f; }
+
+/* ===== その他 ===== */
+.subway img { width:100%; height:100%; object-fit:cover; object-position:center; }
+footer { background:black; color:white; min-height:50vh; display:flex; align-items:center; justify-content:center; font-size:40px; font-weight:bold; }
+.video { width:100%; padding:8px; background-color:#f7f5f5; }
+.works{
+  text-decoration: none;
+  font-size: 70px;
+}
+.cont{
+  text-decoration: none;
+  font-size: 70px;
+}
+.des{
+  text-decoration: none;
+  font-size: 70px;
+}
+
+.works p{
+  text-decoration: none;
+  font-size: 70px;
+}
+.cont p{
+  text-decoration: none;
+  font-size: 70px;
+}
+.des p{
+  text-decoration: none;
+  font-size: 70px;
+}
+
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+  .img-container { flex-direction:column; }
+  .img-container img { width:100%; }
+  .text-box { width:100%; text-align:center; }
+  .red { color:#f1f0f0; font-size:20px; margin-top:50px; }
+  .word-2 { color:white; }
+  h1 { color:#080000; }
+}
+</style>
 </head>
 <body>
-    <section class="main">
-    <video src="relax.mp4"muted autoplay loop class="video"></video>
-    <p class="text-1">ART CONTENTS</p>
-    <p class="home">home</p>
-    <p class="work">work</p>
-    <p class="content">content</p>
-    </section>
-    <section class="main-2">
-        <img src="beach.jpg"class="beach">
-              <p class="text-2">The Appeal of Music Production
 
-Music production is more than just creating sound — it is the art of transforming emotions, experiences, and imagination into something people can feel. It allows ideas to become melodies, and melodies to become memories.
+<div class="intro-screen">
+  <div class="intro-text">Creation</div>
+</div>
 
-One of the greatest appeals of music production is freedom. There are no limits to creativity. A simple beat can evolve into a full composition, and a single inspiration can turn into a song that moves the world. Every choice — rhythm, harmony, tone, and texture — shapes a unique musical universe.</p>
-        
+<header>
+  <div>imagination</div>
+  <div class="hamburger" id="hamburger"></div>
+</header>
+<div class="close-btn" id="closeBtn">×</div>
+<div class="header-message">SOLUTION</div>
+
+<div class="menu" id="menu">
   
-    </section>
-    <section class="main-3">
-    <img src="window.jpg" class="window">
-    <video src="woman.mp4"muted autoplay loop
-    class="video-2"></video>
-    </section>
-    <section class="main-5">
-        <p class="text-4">DINAMIC</p>
-        
-    </section>
-    <section class="photo">
-    <img src="old woman.jpg"class="old">
-        <img src="street3.jpg" class="street">
-        </section>
+ <a href="3d.html"class="des"><p>Creation</p></a>
+ <a href="works.html"class="works"><P>works</P></a>
+  <a href="contact.html"class="cont"><p>Contact</p></a>
+</div>
 
-      <section class="main-6">
-        <p class="text-5">01 02 direct</p>
-        
-    </section>
-    <section class="end">
-        <video src="whether.mp4"muted autoplay loop class="video-2"></video>
-        <p class="sold">SOLD</p>
-    </section>
-    <style>
-        html,body{
-            margin: 0;
-            padding: 0;
-            background: black;
-        }
-        .main{
-            font-size: 180px;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            width: 100%;
-            height: 90vh;
-            color: white;
-        }
-        .video{
-            width: 100%;
-        }
-        .text-1 {
-    position: absolute;
-    top: 16%;
-    left: 20%;
-    font-size: 180px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    /* 色変更アニメーション追加 */
-    animation: colorChange 10s linear infinite;
-}
+<div class="down">
+  <a href="#subway-1"><div>Subway</div></a>
+  <a href="#a-to-2"><div>Museum</div></a>
+  <a href="#street-1"><div>Street</div></a>
+  <a href="#tree-1"><div>Tree</div></a>
+  <a href="#whether-1"><div>Weather</div></a>
+</div>
 
-@keyframes colorChange {
-    0%   { color: #ffffff; }
-    25%  { color: #ff6b6b; }
-    50%  { color: #ffe66d; }
-    75%  { color: #6bc1ff; }
-    100% { color: #ffffff; }
-}
-        .main .home{
-            position: absolute;
-            top:70%;
-            font-size: 30px;
-            left: 70%;
-            
-    
-        }
-        .main .work{
-            position: absolute;
-            top:70%;
-            font-size: 30px;
-            left: 75%;
-            
-    
-        }
-        .main .content{
-            position: absolute;
-            top:70%;
-            font-size: 30px;
-            left: 80%;
-            
-    
-        }
-        .main-2{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px;
-    box-sizing: border-box;
-     position: sticky;   /* ←追加 */
-             /* 画面上部に固定 */
-   
-    background: black;
-}
+<main>
+  <section class="south">
+    <div class="whether">whether</div>
+  </section>
 
-.main-2 .text-2{
-    padding-top: 10%;
-    font-size: 40px;
-    width: 45%;
-    color: rgb(206, 248, 21);
-    text-align: left;
-    line-height: 1.6;
-     animation: fadeOut 3s ease-in-out forwards;
-     font-family: Georgia, 'Times New Roman', Times, serif;
-}
-@keyframes fadeOut {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
+  <section class="back-2" id="subway-1">
+    <div class="img-container">
+      <img src="subway.jpg" alt="写真2">
+      <div class="text-box">
+        <div class="text-title-2">Subway</div>
+        <div class="text-desc-2">半分眠ったままの街が、地下鉄のリズムに合わせて少しずつ目を覚ましていく。</div>
+      </div>
+    </div>
+  </section>
 
-.main-2 img{
-    padding-top: 20%;
-    width: 40%;
-    height: auto;
-    top:20%;
-    object-fit: cover;
-      animation: fadeOut 3s ease-in-out forwards;
-}
-@keyframes fadeOut {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-.main-3 {
-    width: 100%;
-    height: 100vh;
-    position: relative; /* ←画像をabsolute中央配置するのに必要 */
-}
+  <div class="word">imagination</div>
 
-.main-3 .window {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20%;
-    transform: translate(-50%, -50%) scale(1);
-    width: 40%;
-    transition: transform 0.1s linear;
-}
-.main-3 .video-2{
-    position: absolute;
-    top: 80%;
-    left:50%;
-    width: 40%;
-     transform: translate(-50%, -50%);
-    width: 20%;
-    z-index: 999;
-}
-.main-5{
-    width: 100%;
-    height: 100vh;
-    
-}
-.main-5 .text-4{
-    position: absolute;
-    left:18%;
-    font-size: 300px;
-    color: rgb(214, 236, 8);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    animation: blink 1s infinite; /* 1秒ごとに点滅、無限ループ */
-}
-@keyframes blink {
-    0%, 50%, 100% {
-        opacity: 1;
-    }
-    25%, 75% {
-        opacity: 0;
-    }
-}
-.photo{
-    width: 100%;
-    height: auto;
-    
-}
-.photo .old{
-    position: absolute;
-    left: 20%;
+  <section class="back-2" id="a-to-2">
+    <div class="img-container">
+      <img src="a-to.jpg" alt="写真2">
+      <div class="text-box">
+        <div class="text-title-2">Museum</div>
+        <div class="text-desc-2">美術館の片隅、ひとつの作品の前で足が止まった。</div>
+      </div>
+    </div>
+  </section>
 
-    width:300px;
-}
-.photo .old,
-.photo .street {
-    opacity: 0;
-    transition: opacity 1s ease-out;
-}
+  <section class="back-4" id="street-1">
+    <div class="img-container">
+      <img src="Id 324.jpg" alt="写真4">
+      <div class="text-box">
+        <div class="text-title-4">Street</div>
+        <div class="text-desc-4">灯る看板がゆらりと揺れ、その先には昼とは別の顔をした小さな店があった。</div>
+      </div>
+    </div>
+  </section>
 
-.photo .street{
-    position: absolute;
-    left: 70%;
-    width:300px;
-}
-.main-6{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    
-}
-.main-6 .text-5{
-    position: absolute;
-    top: 100px;
-    left:4%;
-    font-size: 40px;
-    color: rgb(189, 12, 166);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    animation: colorChange 10s linear infinite;
-}
-.end{
-    width: 100%;
-    height: 100vh;
-    position: relative;
-}
-.end .video-2{
-    width:100%;
-    height:100vh;
-    object-fit: cover;
-}
-.end .sold{
-    position: absolute;
-    font-size: 100px;
-    color: rgb(211, 242, 13);
-    top:20%;
-    left: 45%;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    animation: colorChange 10s linear infinite;
-    
-}
-    
-       @media (max-width: 576px) {
-        .main{
-            position: relative;            display: flex;
-        }
+  <section class="back-2" id="tree-1">
+    <div class="img-container">
+      <img src="tree.jpg" alt="写真2">
+      <div class="text-box">
+        <div class="text-title-2">Tree</div>
+        <div class="text-desc-2">揺れる街路樹の影がゆっくり揺れる。</div>
+      </div>
+    </div>
+  </section>
+</main>
 
-        .text-1{
-            position: absolute;
-            top:2px;
-            font-size: 40px;
-            color: white;
-            left:28%;
+<div class="subway" id="whether-1">
+  <img src="view.jpg" alt="">
+</div>
 
-        }
-        .main .work{
-            position: absolute;
-            top:14%;
-            font-size: 12px;
-            left: 75%;
-            
-    
-        }
-        .main .home{
-            position: absolute;
-            top:14%;
-            font-size: 12px;
-            left: 65%;
-            
-    
-        }
-        .main .content{
-            position: absolute;
-            top:14%;;
-            font-size: 12px;
-            left: 85%;
-            
-    
-        }
-        .main-2{
-        flex-direction: column;
-        text-align: center;
-    }
-    .main-2 .text-2,
-    .main-2 img{
-        width: 100%;
-    }
-    .main-2 .text-2{
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-    .main-5{
-    width: 100%;
-    height: 20vh;
-    
-}
-.main-5 .text-4{
-    position: absolute;
-    left:30%;
-    font-size: 40px;
-    color: rgb(136, 238, 10);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-.photo{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-}
-.photo .old{
-    position: absolute;
-    top: 10px;
-    left: 20%;
-   
+<video src="art.mp4" autoplay muted loop playsinline class="video"></video>
+<footer>Just like weather</footer>
 
-    width:200px;
-}
-.photo .street{
-    position: absolute;
-    width: 200px;
-    top: 40%;
-    left: 20%;
-}
-.end .sold{
-    position: absolute;
-    font-size: 50px;
-    color: rgb(211, 242, 13);
-    top:20%;
-    left: 23px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    
-}
-    /* スマホ用のCSS */
-}
-
-    </style>
 <script>
-window.addEventListener("scroll", () => {
-  const img = document.querySelector(".window");
-  const scrollY = window.scrollY;
-  const scale = 1 + scrollY * 0.0005; //スクロールで倍率アップ
-  img.style.transform = `translate(-50%, -50%) scale(${scale})`;
-});
-window.addEventListener("scroll", () => {
-    const oldImg = document.querySelector(".old");
-    const streetImg = document.querySelector(".street");
-    
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
+const hamburger = document.getElementById('hamburger');
+const menu = document.getElementById('menu');
+const closeBtn = document.getElementById('closeBtn');
 
-    const oldPos = oldImg.offsetTop;
-    const streetPos = streetImg.offsetTop;
-
-    // スクロールが画像に近づいたらフェードイン
-    if(scrollY + windowHeight > oldPos + 100) {
-        oldImg.style.opacity = 1;
-    }
-    if(scrollY + windowHeight > streetPos + 100) {
-        streetImg.style.opacity = 1;
-    }
+// ハンバーガークリック → メニュー開閉
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  menu.classList.toggle('active');
+  closeBtn.classList.toggle('show');
 });
+
+// ×ボタンクリック → メニュー閉じる
+closeBtn.addEventListener('click', () => {
+  hamburger.classList.remove('active');
+  menu.classList.remove('active');
+  closeBtn.classList.remove('show');
+});
+
+// スクロールで要素を表示
+const sections = document.querySelectorAll('section');
+const words = document.querySelectorAll('.word');
+
+function reveal() {
+  const triggerBottom = window.innerHeight * 0.85;
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if (sectionTop < triggerBottom) section.classList.add('show');
+  });
+  words.forEach(word => {
+    const wordTop = word.getBoundingClientRect().top;
+    if (wordTop < triggerBottom) word.classList.add('show');
+  });
+}
+
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
 </script>
-
 </body>
 </html>
+

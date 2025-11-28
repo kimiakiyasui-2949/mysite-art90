@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>スクロール画像＆文字フェード</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { 
+    height:100%;
+    overflow-x:hidden; 
+    scroll-behavior: smooth;
+    font-family: 'Georgia', serif;
+    background: #fbf8f8;
+  }
+
+  header{
+    font-size: 24px;
+    margin:0;
+    padding: 6px;
+    color: #111;
+  }
+
+  /* ×ボタンアニメーション */
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+    background: #fff;
+  }
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    background: #fff;
+  }
+
+  /* ハンバーガーアイコン */
+  .hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    width: 30px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hamburger div {
+    height: 4px;
+    background: #0d0d0d;
+    border-radius: 2px;
+  }
+
+  /* 全画面メニュー */
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: rgba(0,0,0,0.95);
+    color: #fff;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .menu.show { height: 100%; }
+  .menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 72px;
+    margin: 20px 0;
+    opacity: 0;
+    transition: opacity 0.5s ease 0.3s;
+  }
+  .menu.show a { opacity: 1; }
+
+  /* ===============================
+      右下からめくれるアニメーション
+  =============================== */
+  .section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+
+    opacity: 0;
+    transform-origin:  right;      /* ★右下を支点にめくる */
+    transform: rotateX(20deg) rotateY(deg); /* 少し右方向に傾けて立体感 */
+    perspective: 1200px;
+    backface-visibility: hidden;
+    transition:
+      transform 1.9s cubic-bezier(0.55, 0.12, 0.3, 1.15),
+      opacity 1.2s ease;
+    box-shadow: -80px -80px 160px rgba(245, 245, 245, 0.7);
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: rotateX(0deg) rotateY(0deg);
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+  }
+
+  .text {
+    margin-top: 250px;
+    font-size: 24px;
+    color: #faf2f2;
+  }
+
+  .section .slide-text {
+    top: 30px;
+    left: 20px;
+    color: #f40707;
+    font-size: 2rem;
+    width:100%;
+    background-color: #fff;
+    opacity: 0.4;
+  }
+
+  /* 動画セクション */
+  .section-1 {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .video {
+    width: 50%;
+    padding: 0;
+    margin: 0;
+    padding-top:24px;
+    padding-bottom: 24px;
+  }
+
+  .section-1 .come {
+    font-size: 28px;
+    align-items: center;
+    margin: 0;
+    padding-top: 36px;
+    color: #0f0f0f;
+  }
+
+  .section-3 {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .section-3 .feel {
+    text-align: center;
+    padding: 8px;
+    margin: 0;
+    font-size: 28px;
+    color: #0f0f0f;
+  }
+
+  /* 中央文字 */
+  .section .slide-center-text {
+    font-size: 4rem;
+    text-shadow: 3px 3px 15px rgba(7, 7, 7, 0.7);
+  }
+
+</style>
+</head>
+<body>
+  <header>works</header>
+
+  <!-- ハンバーガー -->
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- 全画面メニュー -->
+  <div class="menu" id="menu">
+    <a href="index.html">Home</a>
+    <a href="3d.html">Creation</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- スクロールで現れる画像セクション -->
+<section class="section" 
+  style="background-image:url('beach.jpg'); cursor:pointer;" 
+  onclick="location.href='beach.html'">
+  <div class="slide-center-text">Welcome to the Beach</div>
+  <div class="text">scroll</div>
+</section>
+
+
+  <section class="section-1">
+    <video src="for-1.mp4" autoplay muted loop playsinline class="video"></video>
+    <div class="come">Come and feel the vibe</div>
+  </section>
+
+  <section class="section" style="background-image:url('airport.jpg');
+  cursor:pointer;" 
+  onclick="location.href='airport.html'">
+    <div class="slide-text">Air port</div>
+    <div class="slide-center-text">Flying High</div>
+  </section>
+
+  <section class="section-3">
+    <div class="feel">feel</div>
+  </section>
+
+  <section class="section" style="background-image:url('man.jpg');
+  cursor:pointer;" 
+  onclick="location.href='man.html'">
+    <div class="slide-text">Street</div>
+    <div class="slide-center-text">City Life</div>
+  </section>
+
+  <section class="section" style="background-image:url('river.jpg');
+  cursor:pointer;" 
+  onclick="location.href='river.html'">
+    <div class="slide-text">River</div>
+    <div class="slide-center-text">Flowing Nature</div>
+  </section>
+
+  <script>
+    // ハンバーガーメニュー
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('show');
+      hamburger.classList.toggle('active');
+    });
+
+    // スクロールで各セクションをフェードイン（右下からめくれる）
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
+
+
+

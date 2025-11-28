@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スクロール画像＆文字フェード</title>
+<style>
+body {
+ 
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Georgia', serif;
+}
+h1 {
+  font-size: 70px;
+  font-weight: bold;
+  padding-left: 24px;
+   font-family: 'Georgia', serif;
+}
+.text {
+  padding-left: 24px;
+  font-size: 30px;
+ 
+
+ 
+}
+/* ...existing code... */
+.text span {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(40px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+/* ...existing code... */
+section {
+  width: 100%;
+}
+section img {
+  width: 80%;
+  padding-left: 24px;
+}
+footer {
+  
+  width: 100%;
+  text-align: center;
+  font-size: 32px;
+  padding: 32px 0;
+}
+
+/* === ハンバーガーメニュー === */
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.menu-btn span {
+  display: block;
+  height: 4px;
+  background: #060606;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(13px);
+  background-color: white;
+}
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+  background-color: white;
+
+}
+.menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-13px);
+  background-color: white;
+}
+
+/* === メニュー全画面 === */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(13, 13, 13, 0.98);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+  z-index: 999;
+}
+.nav.active {
+  transform: translateY(0);
+}
+.nav a {
+  font-size: 58px;
+  color: #fafafa;
+  text-decoration: none;
+  margin: 20px;
+  transition: color 0.3s;
+}
+.nav a:hover {
+  color: #0077cc;
+}
+.video-1{
+    width:100%;
+    text-align: center;
+}
+.video{
+    width: 70%;
+    padding-top: 32px;
+}
+a{
+    color: #060606;
+    padding-left: 24px;
+    font-size: 24px;
+    padding-top: 24px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<a href="works.html">works</a>
+
+<!-- ハンバーガーメニュー -->
+<div class="menu-btn" id="menuBtn">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- ナビゲーションメニュー -->
+<nav class="nav" id="navMenu">
+  <a href="works.html">works</a>
+  <a href="3d.html">Creation</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<h1>Flowing Nature</h1>
+<p class="text">
+The river, rushing swiftly through<br><span> the mountains,
+strikes against</span><br> <span>the rocks and sends up sprays of</span> <br><span>foam as it powerfully flowsdownstream</span>
+</p>
+<section>
+  <img src="river.jpg" alt="Beach Image">
+</section>
+
+
+<footer>
+  <h1>NO4</h1>
+  <p class="just">just like that weather</p>
+</footer>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.getElementById('navMenu');
+
+menuBtn.addEventListener('click', () => {
+  menuBtn.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+// ...existing code...
+window.addEventListener('DOMContentLoaded', () => {
+  const spans = document.querySelectorAll('.text span');
+  spans.forEach((span, i) => {
+    setTimeout(() => {
+      span.style.opacity = '1';
+      span.style.transform = 'translateY(0)';
+    }, i * 700); // 1行ごとに0.7秒遅延
+  });
+});
+// ...existing code...
+
+</script>
+</body>
+</html>
