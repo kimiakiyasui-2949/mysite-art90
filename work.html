@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WORK | Kento Utsubo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+/* ===== 基本 ===== */
+body{
+  margin:0;
+  font-family: "DM Serif Display", serif;
+  background:#f5f4f2;
+  color:#98996e;
+}
+
+/* ===== タイトル部分 ===== */
+.title{
+  padding:40px 0;
+  text-align:center;
+}
+
+.title h1{
+  font-size:14px;
+  letter-spacing:0.2em;
+  margin:0;
+  cursor:pointer;
+}
+
+.title h2{
+  font-size:26px;
+  letter-spacing:0.25em;
+  margin:10px 0 0;
+}
+
+.title h4{
+  margin:5px 0 0;
+}
+
+/* ===== MANU メニュー ===== */
+.manu-menu{
+  opacity:0;
+  max-height:0;
+  overflow:hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+  text-align:center;
+  margin-top:10px;
+}
+
+.manu-menu.show{
+  opacity:1;
+  max-height:500px;
+}
+
+.manu-menu a{
+  display:block;
+  font-size:18px;
+  letter-spacing:0.2em;
+  margin:10px 0;
+  text-decoration:none;
+  color:#ed2121;
+}
+
+.manu-menu a:hover{
+  opacity:0.6;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+  color: #666;
+  background: #f5f5f5;
+  z-index: 1000;
+}
+
+/* ===== 縦並びギャラリー ===== */
+.vertical-gallery{
+  max-width:800px;
+  margin:0 auto;
+  padding-bottom:40px;
+}
+
+.vertical-gallery img{
+  width:80%;
+  display:block;
+  margin:0 auto 40px auto;
+  opacity:0;                  /* 初期は透明 */
+  transform: translateY(40px); /* 下にずらす */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.text-1{
+    text-align: center;
+    font-size: 20px;
+}
+.text-5{
+   margin: 0 auto;;
+}
+
+/* visibleクラスが付いたら浮かび上がる */
+.vertical-gallery img.visible{
+  opacity:1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- タイトル＆メニュー -->
+<div class="title">
+  <h1 onclick="toggleManu()">MANU</h1>
+  <h2>KENTO UTSUBO</h2>
+  <h4>WORK</h4>
+  <p>Original artwork</p>
+  <div class="manu-menu" id="manuMenu">
+    <a href="index.html">HOME</a>
+    <a href="beauty.html">BEAUTY</a>
+    <a href="profile.html">PROFILE</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</div>
+
+<!-- ギャラリー -->
+<div class="vertical-gallery">
+  <img src="art.jpg" alt="Photo 1">
+  <img src="aunt1.jpg" alt="Photo 2">
+   <div class="text-1"><p clas="text-5">perfecct</p></div>
+ <img src="ao.jpg" alt="Photo 3">
+ <div class="text-1"><p clas="text-5">The final piece</p></div>
+  <img src="bill.jpg" alt="Photo 4">
+  
+  <img src="bl.jpg" alt="Photo 5">
+</div>
+<footer>
+  <p>(p)Kimiaki Yasui</p>
+</footer>
+
+<script>
+// MANUメニューの開閉
+function toggleManu(){
+  const menu = document.getElementById('manuMenu');
+  menu.classList.toggle('show');
+}
+
+// スクロールで画像を浮かび上がらせる
+const images = document.querySelectorAll('.vertical-gallery img');
+
+function checkImages() {
+  const triggerBottom = window.innerHeight * 0.85;
+  images.forEach(img => {
+    const imgTop = img.getBoundingClientRect().top;
+    if(imgTop < triggerBottom){
+      img.classList.add('visible');
+    }
+  });
+}
+
+// 初回とスクロール時にチェック
+window.addEventListener('scroll', checkImages);
+window.addEventListener('load', checkImages);
+</script>
+
+</body>
+</html>
+

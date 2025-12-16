@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beauty | Kento Utsubo</title>
+
+<style>
+body{
+  margin:0;
+ font-family: "DM Serif Display", serif;
+   background:#f5f4f2;
+  color:#98996e;
+}
+
+/* タイトル部分 */
+.title{
+  padding:40px 0;
+  text-align:center;
+}
+
+.title h1{
+  font-size:14px;
+  letter-spacing:0.2em;
+  margin:0;
+  cursor:pointer;
+}
+
+.title h2{
+  font-size:26px;
+  letter-spacing:0.25em;
+  margin:10px 0 0;
+}
+
+
+/* ===== 縦並びギャラリー ===== */
+.vertical-gallery{
+  max-width:800px;
+  margin:0 auto;
+}
+
+.vertical-gallery img{
+  width:100%;
+  display:block;
+  margin-bottom:40px; 
+}
+
+/* ===== MANU メニュー ===== */
+.manu-menu{
+  opacity:0;
+  max-height:0;
+  overflow:hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+  text-align:center;
+  margin-top:10px;
+}
+
+.manu-menu.show{
+  opacity:1;
+  max-height:500px; /* 十分な高さを指定 */
+}
+
+.manu-menu a{
+  display:block;
+  font-size:18px;
+  letter-spacing:0.2em;
+  margin:10px 0;
+  text-decoration:none;
+  color:#ed2121;
+}
+
+.manu-menu a:hover{
+  opacity:0.6;
+}
+.text-2{
+    padding-left: 3px;
+    
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">
+  <h1 onclick="toggleManu()">MANU</h1>
+  <h2>KENTO UTSUBO</h2>
+  <H4>PROFILE</H4>
+  <div class="manu-menu" id="manuMenu">
+    <a href="index.html">HOME</a>
+    <a href="work.html">WORK</a>
+    <a href="beauty.html">BEAUTY</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</div>
+<P class="text-2">Profile
+兵庫県神戸市出身。高校卒業後、美容学校を卒業し美容師に。
+2008年～2010年　ニューヨークで、撮影・ヘアーサロンでのアシスタントを経験。<br>
+2010年～2013年　日本でメイクアップアーティストとして活躍。<br>
+2013年～2018年　再度渡米。ニューヨークでフリーのメイクアップアーティストとしてVOGUE magazine、Harper’s Bazaar、V magazine などの世界的有名雑誌を手がけながら、<br>ファッションショーでのリードメイクを手がける。<br>
+2018年～現在　複数の化粧品会社からのスポンサーシップを獲得し、<br>ニューヨークファッションウィーク（NYFW）でショーのリードメイク、オーガナイザーとして携わりながら、<br>自らもモデルとしファッションショーを歩くという奇抜な演出を行い、メディアに取り上げらる。</P>
+
+<script>
+function toggleManu(){
+  const menu = document.getElementById('manuMenu');
+  menu.classList.toggle('show');
+}
+</script>
+
+</body>
+</html>
+
