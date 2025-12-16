@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Beauty | Kento Utsubo</title>
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-html, body {
+/* ===== RESET ===== */
+html, body{
   margin:0;
   padding:0;
   height:100%;
 }
 
+/* ===== BODY ===== */
 body{
-  font-family:Arial, sans-serif;
-  background:#fff;
-  color:#000;
+  background:#f5f4f2;
+  color:#98996e;
+  font-family:"DM Serif Display", serif;
   display:flex;
   flex-direction:column;
-  font-family: "DM Serif Display", serif;
 }
 
-/* ===== コンテンツ ===== */
+/* ===== CONTENT ===== */
 .content{
-  flex:1; /* フッター以外の部分が伸びる */
-  padding-bottom:40px;
+  flex:1;
 }
 
-/* タイトル部分 */
+/* ===== TITLE ===== */
 .title{
   padding:40px 0;
   text-align:center;
@@ -38,7 +40,7 @@ body{
 
 .title h1{
   font-size:14px;
-  letter-spacing:0.2em;
+  letter-spacing:0.3em;
   margin:0;
   cursor:pointer;
 }
@@ -46,74 +48,103 @@ body{
 .title h2{
   font-size:26px;
   letter-spacing:0.25em;
-  margin:10px 0 0;
+  margin:10px 0;
 }
 
-/* ===== 縦並びギャラリー ===== */
-.vertical-gallery{
-  max-width:800px;
-  margin:0 auto;
-  margin-bottom:40px;
+.title h4{
+  font-size:12px;
+  letter-spacing:0.2em;
+  margin-top:15px;
 }
 
-.vertical-gallery img{
-  width:100%;
-  display:block;
-  margin-bottom:40px; 
-}
-
-/* ===== MANU メニュー ===== */
+/* ===== MANU MENU ===== */
 .manu-menu{
   opacity:0;
   max-height:0;
   overflow:hidden;
-  transition: opacity 0.5s ease, max-height 0.5s ease;
-  text-align:center;
-  margin-top:10px;
+  transition:0.5s ease;
 }
 
 .manu-menu.show{
   opacity:1;
-  max-height:500px; /* 十分な高さ */
+  max-height:500px;
 }
 
 .manu-menu a{
   display:block;
-  font-size:18px;
-  letter-spacing:0.2em;
   margin:10px 0;
+  font-size:16px;
+  letter-spacing:0.2em;
   text-decoration:none;
-  color:#f20a0a;
+  color:#ed2121;
 }
 
 .manu-menu a:hover{
   opacity:0.6;
 }
 
-/* ===== CONTACT FORM 左下固定 ===== */
-#contactForm{
+/* ===== GALLERY ===== */
+.vertical-gallery{
+  max-width:800px;
+  margin:0 auto 60px;
+}
 
+.vertical-gallery img{
+  width:100%;
+  display:block;
+  margin-bottom:40px;
+}
+
+/* ===== CONTACT FORM ===== */
+#contactForm{
+  position:fixed;
   left:20px;
-  bottom:40px;
-  background:#fff;
+  bottom:20px;
+  width:260px;
   padding:20px;
-  width:300px;
+  background:rgba(245,244,242,0.95);
+  font-family:"Montserrat", sans-serif;
   z-index:1000;
 }
 
-#contactForm input, #contactForm textarea{
+#contactForm input,
+#contactForm textarea{
   width:100%;
-  margin-bottom:10px;
-  padding:8px;
+  padding:8px 0;
+  margin-bottom:12px;
+  border:none;
+  border-bottom:1px solid #98996e;
+  background:transparent;
+  font-size:12px;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus{
+  outline:none;
+  border-bottom:1px solid #ed2121;
+}
+
+#contactForm button{
+  width:100%;
+  padding:10px;
+  border:none;
+  background:#121212;
+  color:#f6f1f1;
+  font-size:12px;
+  letter-spacing:0.2em;
+  cursor:pointer;
+}
+
+#contactForm button:hover{
+  opacity:0.8;
 }
 
 /* ===== FOOTER ===== */
 footer{
-  text-align:center;
+  text-align:left;
   padding:10px;
   font-size:12px;
-  color:#666;
-  background:#f5f5f5;
+  color:#090909;
 }
 </style>
 </head>
@@ -125,7 +156,8 @@ footer{
   <div class="title">
     <h1 onclick="toggleManu()">MANU</h1>
     <h2>KENTO UTSUBO</h2>
-     <H4>CONTACT</H4>
+    <h4>CONTACT</h4>
+
     <div class="manu-menu" id="manuMenu">
       <a href="index.html">HOME</a>
       <a href="work.html">WORK</a>
@@ -134,28 +166,42 @@ footer{
     </div>
   </div>
 
- 
+  <!-- ギャラリー（必要なら画像追加） -->
+  <div class="vertical-gallery">
+    <!-- <img src="img01.jpg"> -->
+    <!-- <img src="img02.jpg"> -->
+  </div>
 
 </div>
 
-<!-- 左下のメールフォーム -->
-<form id="contactForm" action="mailto:yourmail@gmail.com" method="post" enctype="text/plain">
-  <input type="text" name="name" placeholder="Name">
-  <input type="email" name="email" placeholder="Email">
-  <textarea name="message" rows="5" placeholder="Message"></textarea>
-  <button type="submit">Send</button>
-</form>
+<!-- CONTACT FORM -->
+<div id="contactForm">
+  <form
+    action="https://formsubmit.co/yourmail@gmail.com"
+    method="POST"
+    autocomplete="on"
+  >
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://kimiakiyasui-2949.github.io/-12/index.html">
+
+    <input type="text" name="name" placeholder="Name" required autocomplete="name">
+    <input type="email" name="email" placeholder="Email" required autocomplete="email">
+    <textarea name="message" placeholder="Message" required autocomplete="off"></textarea>
+
+    <button type="submit">SEND</button>
+  </form>
+</div>
 
 <footer>
-  <p>Kimiaki Yasui</p>
+  <p>© Kimiaki Yasui</p>
 </footer>
 
 <script>
 function toggleManu(){
-  const menu = document.getElementById('manuMenu');
-  menu.classList.toggle('show');
+  document.getElementById("manuMenu").classList.toggle("show");
 }
 </script>
 
 </body>
 </html>
+
